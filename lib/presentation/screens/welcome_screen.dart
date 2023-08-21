@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'counter_screen.dart';
-
-
+import 'avatar_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -17,7 +15,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CounterScreen(),
+          builder: (context) => AvatarPage(),
         ),
       ),
     );
@@ -27,11 +25,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/screeninitial.JPG'),
-              fit: BoxFit.cover)),
-      child: Scaffold(
+      decoration: newMethod(),
+      child: const Scaffold(
           backgroundColor: Colors.transparent,
           body: Center(
               child: Column(
@@ -39,9 +34,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             children: <Widget>[
               CircularProgressIndicator(),
               Text('Loading',
-                  style: TextStyle( color: Colors.white70, fontSize: 28))
+                  style: TextStyle(color: Colors.white70, fontSize: 28))
             ],
           ))),
     );
+  }
+
+  BoxDecoration newMethod() => decorationScreenInitial();
+
+  BoxDecoration decorationScreenInitial() {
+    return const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/screeninitial.JPG'),
+            fit: BoxFit.cover));
   }
 }
